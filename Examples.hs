@@ -2,7 +2,7 @@
 {-# LANGUAGE TypeOperators,KindSignatures,TypeFamilies, DataKinds #-}
 module Examples where
 import Prelude hiding ((.))
-import Records
+import Data.OpenRecords
 
 -- notice Extensible records implement Show Eq and Ord and such, given that all element have 
 -- the corresponding type class
