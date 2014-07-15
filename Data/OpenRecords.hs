@@ -334,15 +334,15 @@ data CWit (c :: * -> Constraint) = CWit
 class Forall (r :: Row *) (c :: * -> Constraint) where
   -- | Given a default value @a@, where@a@ can be instantiated to each type in the row,
   -- create a new record in which all elements carry this default value.
-  rinit     :: CWit c -> (forall a. c a => a) -> Rec r
+  rinit     :: cwit c -> (forall a. c a => a) -> Rec r
   -- | Given a function @(a -> b)@ where @a@ can be instantiated to each type in the row,
   --   apply the function to each element in the record and collect the result in a list.
 
-  erase    :: CWit c -> (forall a. c a => a -> b) -> Rec r -> [b]
+  erase    :: cwit c -> (forall a. c a => a -> b) -> Rec r -> [b]
   -- | Given a function @(a -> a -> b)@ where @a@ can be instantiated to each type of the row,
   -- apply the function to each pair of values that can be obtained by indexing the two records
   -- with the same label and collect the result in a list.
-  eraseZip :: CWit c -> (forall a. c a => a -> a -> b) -> Rec r -> Rec r -> [b]
+  eraseZip :: cwit c -> (forall a. c a => a -> a -> b) -> Rec r -> Rec r -> [b]
 
 data FWit (f :: * -> *) = FWit
 
